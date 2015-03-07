@@ -15,7 +15,7 @@
   apt: update_cache=yes cache_valid_time=3600
   tags: update_cache
 
-- name: Install common packages
+- name: Install common tools
   apt: pkg={{ item }} state=present
   with_items:
     - htop
@@ -24,7 +24,7 @@
     - python-software-properties
     - curl
 
-- name: Install tools and other common requirements
+- name: Install common requirements
   apt: pkg={{ item }} state=present
   with_items:
     - build-essential
@@ -35,14 +35,11 @@
   tags: bootstrap
 
 - name: Engine requirements
-  pip: name={{ item }} state=latest
+  apt: pkg={{ item }} state=present
   with_items:
     - libjpeg62
     - libjpeg62-dev
     - zlib1g-dev
     - imagemagick
     - graphicsmagick
-    - libmagickwand-dev
-    - libgraphicsmagick++-dev
     - libboost-python-dev
-    - libboost-thread-dev

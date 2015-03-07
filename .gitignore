@@ -59,3 +59,5 @@ docs/_build/
 tests/thumbnail_kvstore
 tests/thumbnail_kvstore.db
 tests/thumbnail_kvstore.lock
+
+.vagrant/
