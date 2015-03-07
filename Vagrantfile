@@ -11,14 +11,14 @@ Vagrant.configure("2") do |config|
     virtualbox.cpus = 2
   end
 
-  config.vm.define "web" do |web1|
-    web1.vm.network :forwarded_port, guest: 80, host: 8000
-  end
+  config.vm.define "web" do |web|
+    web.vm.network :forwarded_port, guest: 80, host: 8000
 
-  web.vm.provision "ansible" do |ansible|
-    ansible.inventory_path = "provision/inventory/vagrant.inv"
-    ansible.playbook = "provision/development.yml"
-    ansible.verbose = "v"
+    web.vm.provision "ansible" do |ansible|
+      ansible.inventory_path = "provision/inventory/vagrant.inv"
+      ansible.playbook = "provision/development.yml"
+      ansible.verbose = "v"
+    end
   end
 
 end
