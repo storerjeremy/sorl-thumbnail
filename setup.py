@@ -1,8 +1,16 @@
 # -*- encoding: utf8 -*-
+from __future__ import unicode_literals
+
 from setuptools import setup, find_packages
 from setuptools.command.test import test
 
-from sorl import __version__, __author__, __maintainer__, __email__, __license__
+
+def get_module_meta(module_path):
+    import re
+ 
+    with open(module_path) as cakebet_meta:
+        meta = cakebet_meta.read()
+    return dict(re.findall('(?P<key>__.+__)\s=\s["\' ](?P<value>.+)["\' ]', meta))
 
 
 class TestCommand(test):
@@ -12,22 +20,22 @@ class TestCommand(test):
         runtests()
 
 
+meta = get_module_meta('thumbnail/__init__.py')
+
 setup(
-    name='sorl-thumbnail',
-    version=__version__,
-    description='Thumbnails for Django',
+    name='python-thumbnail',
+    version=meta['__version__'],
+    description='Thumbnails for Python',
     long_description=open('README.rst').read(),
-    author=__author__,
-    author_email='mikko@aino.se',
-    maintainer=__maintainer__,
-    maintainer_email=__email__,
-    license=__license__,
-    url='https://github.com/mariocesar/sorl-thumbnail',
+    author=meta['__author__'],
+    author_email='mariocesar.c50@gmail.com',
+    license=meta['__license__'],
+    url='https://github.com/mariocesar/python-thumbnail',
     packages=find_packages(exclude=['tests', 'tests.*']),
     platforms='any',
     zip_safe=False,
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 1 - Planning',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
@@ -38,6 +46,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Multimedia :: Graphics',
         'Framework :: Django',
+        'Framework :: Flask',
     ],
     cmdclass={"test": TestCommand},
 )

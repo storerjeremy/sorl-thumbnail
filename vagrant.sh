@@ -9,6 +9,3 @@ apt-get update
 apt-get install -qq python2.7 python2.7-dev python3.3 python3.3-dev
 
 pip install tox
-
-# Start in project dir by default
-echo "\n\ncd /vagrant" >> /home/vagrant/.bashrc
