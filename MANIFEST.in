@@ -1,5 +1,7 @@
 include LICENSE README.rst
 recursive-include docs *
 recursive-include tests *
+recursive-exclude .vagrant
+recursive-exclude provision
 recursive-exclude * *.pyc
 prune docs/_build
