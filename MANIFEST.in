@@ -1,7 +1,15 @@
-include LICENSE README.rst
+include LICENSE
+include README.md
+include MANIFEST.in
+include Vagrantfile
+include *.ini *.conf *.cfg
+
 recursive-include docs *
 recursive-include tests *
+recursive-include provision *
+
 recursive-exclude .vagrant
-recursive-exclude provision
-recursive-exclude * *.pyc
+recursive-exclude * *.py[co]
+recursive-exclude * __pycache__
+
 prune docs/_build
