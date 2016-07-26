@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('key', models.CharField(serialize=False,
                                          db_column='key',
-                                         max_length=200,
+                                         max_length=191,
                                          primary_key=True)),
                 ('value', models.TextField()),
             ],
